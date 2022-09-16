@@ -1,0 +1,118 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="zhabenov (generated)" id="1663002032787-1">
+        <createTable tableName="countries">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="countries_pk"/>
+            </column>
+            <column name="name" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="zhabenov (generated)" id="1663002032787-2">
+        <createTable tableName="marks">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="marks_pk"/>
+            </column>
+            <column name="name" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="zhabenov (generated)" id="1663002032787-3">
+        <createTable tableName="cities">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="cities_pk"/>
+            </column>
+            <column name="name" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="zhabenov (generated)" id="1663002032787-4">
+        <createTable tableName="models">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="models_pk"/>
+            </column>
+            <column name="name" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mark_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="zhabenov (generated)" id="1663002032787-5">
+        <createTable tableName="ads">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ads_pk"/>
+            </column>
+            <column name="mark_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="model_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="year" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="color_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cleared" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_number" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="transmission" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="wheel_drive" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fuel_type" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="engine_capacity" type="FLOAT8">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="zhabenov (generated)" id="1663002032787-6">
+        <createTable tableName="colors">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="colors_pk"/>
+            </column>
+            <column name="name" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="zhabenov (generated)" id="1663002032787-7">
+        <addForeignKeyConstraint baseColumnNames="country_id" baseTableName="marks" constraintName="marks_countries_id_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="countries" validate="true"/>
+    </changeSet>
+    <changeSet author="zhabenov (generated)" id="1663002032787-8">
+        <addForeignKeyConstraint baseColumnNames="mark_id" baseTableName="models" constraintName="models_marks_id_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="marks" validate="true"/>
+    </changeSet>
+    <changeSet author="zhabenov (generated)" id="1663002032787-9">
+        <addForeignKeyConstraint baseColumnNames="city_id" baseTableName="ads" constraintName="ads_cities_id_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="cities" validate="true"/>
+    </changeSet>
+    <changeSet author="zhabenov (generated)" id="1663002032787-10">
+        <addForeignKeyConstraint baseColumnNames="mark_id" baseTableName="ads" constraintName="ads_marks_id_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="marks" validate="true"/>
+    </changeSet>
+    <changeSet author="zhabenov (generated)" id="1663002032787-11">
+        <addForeignKeyConstraint baseColumnNames="model_id" baseTableName="ads" constraintName="ads_models_id_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="models" validate="true"/>
+    </changeSet>
+    <changeSet author="zhabenov (generated)" id="1663002032787-12">
+        <addForeignKeyConstraint baseColumnNames="color_id" baseTableName="ads" constraintName="ads_colors_id_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="colors" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
