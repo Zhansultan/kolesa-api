@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <student>
+        <id>1</id>
+        <firstname>Абдрахман</firstname>
+        <lastname>Азнабакиев</lastname>
+    </student>
+    <student>
+        <id>2</id>
+        <firstname>Юрий</firstname>
+        <lastname>Ананьин</lastname>
+    </student>
+</root>
